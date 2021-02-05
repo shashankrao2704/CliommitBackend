@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS =["C:/Users/user/PycharmProjects/CliommitBackend/cliommitPlatform/static"]
 
 # Application definition
 
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'cliommitPlatform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,8 +77,11 @@ WSGI_APPLICATION = 'cliommitPlatform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'CliommitDatabase',
+        'HOST': 'mongodb+srv://Shashank:dyqO0Zh31EC3W0sO@cliommitv1.v4ndj.mongodb.net/CliommitDatabase?retryWrites=true&w=majority',
+        'USER': 'Shashank',
+        'PASSWORD': 'dyqO0Zh31EC3W0sO',
     }
 }
 
