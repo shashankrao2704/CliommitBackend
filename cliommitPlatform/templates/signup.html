@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} signup {% endblock %}
+{% block content %}
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+        <form action="{% url 'addUser' %}" method="post">
+
+            {% csrf_token %}
+
+            <span class="login100-form-title">
+            SIGN UP
+            </span>
+
+            <section id="testsection">
+                <div class="inner">
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Username is required">
+                            {{form.username}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                            {{form.password}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            {{form.email}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter phone number">
+                            {{form.phone}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <button id="testbutton" type="button" class="login100-form-btn" onclick="toggleV('testsection'); toggleV('testsection2');"> NEXT </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2 -->
+            <h4></h4>
+            <section id="testsection2" style="display:none">
+                <div class="inner">
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter company name">
+                            {{form.company}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-industry" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter country">
+                            {{form.country}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-map-signs" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter company address">
+                            {{form.address}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-map-pin" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter reg number">
+                            {{form.reg_no}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-id-badge" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter num of employees">
+                            {{form.employees}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-group" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter company sector">
+                            {{form.sector}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-gears" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter annual turnover">
+                            {{form.turnover}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-euro" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <button type="button" class="login100-form-btn" onclick="toggleV('testsection2'); toggleV('testsection3');"> NEXT </button>
+                        </div>
+                        <div>
+                            <button type="button" class="login100-form-btn" onclick="toggleV('testsection2'); toggleV('testsection');"> BACK </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <h4></h4>
+            <section id="testsection3" style="display:none">
+                <div class="inner">
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter electricity consumption">
+                            {{form.electricity}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-power-off" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter air travel data">
+                            {{form.air_travel}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter company automobile travel">
+                            {{form.automobile}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-automobile" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter public transport">
+                            {{form.public_transport}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-subway" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter hotel stays">
+                            {{form.travel_accommodation}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-hotel" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter waste disposal">
+                            {{form.waste}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="wrap-input100 validate-input" data-validate = "Enter water consumption">
+                            {{form.water}}
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-shower" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <button type="button" class="login100-form-btn" onclick="toggleV('testsection3'); toggleV('testsection2');"> BACK </button>
+                        </div>
+                        <div>
+                            <input type="submit" value="Register" class="login100-form-btn">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+            </div>
+    </div>
+    </div>
+{% endblock %}

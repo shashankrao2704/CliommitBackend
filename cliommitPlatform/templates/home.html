@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} home {% endblock %}
+{% block content %}
 <h1>This is our home page</h1>
-</body>
-</html>
+<h1>users on date: {{year}}</h1>
+{% for user in users_list %}
+
+<h2>{{user.name}}</h2>
+<h2>{{user.email}}</h2>
+<h2>{{user.pub_date}}</h2>
+
+{% endfor %}
+
+
+<!--{% for lang in list %}
+<ul>
+    <li>
+        {{lang}}
+    </li>
+</ul>
+{% endfor %}-->
+{% endblock %}
