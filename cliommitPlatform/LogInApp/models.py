@@ -1,17 +1,4 @@
 from django.db import models
-from django.utils import timezone
-
-
-# Create your models here.
-
-class LogIn(models.Model):
-    name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=50)
-    pub_date = models.DateField(default=timezone.now)
-
-    def __str__(self):
-        return self.name
-
 
 class RegistrationData(models.Model):
     # section 1
@@ -27,14 +14,46 @@ class RegistrationData(models.Model):
     employees = models.CharField(max_length=100, default='Null')
     sector = models.CharField(max_length=100, default='Null')
     turnover = models.CharField(max_length=100, default='Null')
-    # section 3
-    electricity = models.CharField(max_length=100, default='Null')
-    air_travel = models.CharField(max_length=100, default='Null')
-    automobile = models.CharField(max_length=100, default='Null')
-    public_transport = models.CharField(max_length=100, default='Null')
-    travel_accommodation = models.CharField(max_length=100, default='Null')
-    waste = models.CharField(max_length=100, default='Null')
-    water = models.CharField(max_length=100, default='Null')
 
     def __str__(self):
         return self.company
+
+class CarbonData(models.Model):
+    user = models.ForeignKey(RegistrationData, on_delete=models.CASCADE)
+    # carbon-disclosure:section 1
+    electricity_renewable = models.CharField(max_length=100, default='Null')
+    electricity_amount = models.CharField(max_length=100, default='Null')
+    electricity_provider = models.CharField(max_length=100, default='Null')
+    electricity_type = models.CharField(max_length=100, default='Null')
+    electricity_heating = models.CharField(max_length=100, default='Null')
+    electricity_gas = models.CharField(max_length=100, default='Null')
+    # carbon-disclosure:section 2
+    travel_air_travel = models.CharField(max_length=100, default='Null')
+    travel_automobile_mileage = models.CharField(max_length=100, default='Null')
+    travel_automobile_commute = models.CharField(max_length=100, default='Null')
+    travel_bus = models.CharField(max_length=100, default='Null')
+    travel_coach = models.CharField(max_length=100, default='Null')
+    travel_train = models.CharField(max_length=100, default='Null')
+    travel_int_train = models.CharField(max_length=100, default='Null')
+    travel_subway = models.CharField(max_length=100, default='Null')
+    travel_tram = models.CharField(max_length=100, default='Null')
+    travel_taxi = models.CharField(max_length=100, default='Null')
+    travel_accommodation_hotel = models.CharField(max_length=100, default='Null')
+    travel_accommodation_motel = models.CharField(max_length=100, default='Null')
+    travel_accommodation_airbnb = models.CharField(max_length=100, default='Null')
+    travel_accommodation_hostel = models.CharField(max_length=100, default='Null')
+    # carbon-disclosure:section 3
+    office_utilities_desktop = models.CharField(max_length=100, default='Null')
+    office_utilities_laptop = models.CharField(max_length=100, default='Null')
+    office_waste_bio = models.CharField(max_length=100, default='Null')
+    office_waste_battery = models.CharField(max_length=100, default='Null')
+    office_waste_plastic = models.CharField(max_length=100, default='Null')
+    office_waste_glass = models.CharField(max_length=100, default='Null')
+    office_waste_paper = models.CharField(max_length=100, default='Null')
+    office_waste_hardware = models.CharField(max_length=100, default='Null')
+    office_water = models.CharField(max_length=100, default='Null')
+
+    def __str__(self):
+        return self.user.company
+    class Meta:
+        ordering = ['user']

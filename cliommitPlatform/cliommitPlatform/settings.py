@@ -81,9 +81,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'CliommitDatabase',
-        'HOST': 'mongodb+srv://Shashank:dyqO0Zh31EC3W0sO@cliommitv1.v4ndj.mongodb.net/CliommitDatabase?retryWrites=true&w=majority',
-        'USER': 'Shashank',
-        'PASSWORD': 'dyqO0Zh31EC3W0sO',
+        'HOST': 'mongodb+srv://MvpTest:MvpTestPassword@cliommitv1.v4ndj.mongodb.net/CliommitDatabase?retryWrites=true&w=majority',
+        'USER': 'MvpTest',
+        'PASSWORD': 'MvpTestPassword',
     }
 }
 

@@ -54,25 +54,119 @@ class RegistrationForm(forms.Form):
     turnover = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
         'type': 'number', 'class': 'input100', 'name': 'turnover', 'placeholder': 'Annual turnover (in Euros)'
     }))
-    electricity = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
-        'type': 'number', 'class': 'input100', 'name': 'electricity', 'placeholder': 'Electricity (in KWh)'
+
+
+YES_NO = (('yes', 'YES'), ('no', 'NO'))
+E_PROVIDER = (
+    ('', 'Select Provider'),
+    ('eprimo', 'Eprimo'), ('QCells', 'Q-Cells'),
+    ('lekker', 'Lekker'), ('lew', 'LEW'),
+    ('vattenfall', 'Vattenfall')
+)
+E_TYPE = (
+    ('', 'Select Type'),
+    ('Natural Gas', 'Natural Gas'), ('Coal', 'Coal'),
+    ('Wind', 'Wind'), ('Nuclear', 'Nuclear'),
+    ('Bio-mass', 'Bio-mass')
+)
+
+
+class CarbonRegistration(forms.Form):
+    electricity_amount = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'electricity_amount', 'placeholder': 'Electricity (in KWh)'
     }))
-    air_travel = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
-        'type': 'number', 'class': 'input100', 'name': 'air_travel', 'placeholder': 'Air travel (in Kms)'
+    electricity_renewable = forms.ChoiceField(choices=YES_NO, widget=forms.RadioSelect(attrs={
+        'type': 'text', 'name': 'electricity_renewable'
     }))
-    automobile = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
-        'type': 'number', 'class': 'input100', 'name': 'automobile', 'placeholder': 'Car usage (in Kms)'
+    electricity_provider = forms.ChoiceField(choices=E_PROVIDER, widget=forms.Select(attrs={
+        'type': 'text', 'class': 'input100', 'name': 'electricity_provider',
+        'placeholder': 'Select Electricity Provider'
     }))
-    public_transport = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
-        'type': 'number', 'class': 'input100', 'name': 'public_transport', 'placeholder': 'Public transport (in Kms)'
+    electricity_type = forms.ChoiceField(choices=E_TYPE, widget=forms.Select(attrs={
+        'type': 'text', 'class': 'input100', 'name': 'electricity_type', 'placeholder': 'Select Electricity Type'
     }))
-    travel_accommodation = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
-        'type': 'number', 'class': 'input100', 'name': 'travel_accommodation', 'placeholder': 'Travel accommodation ('
-                                                                                              'days) '
+    electricity_heating = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'electricity_heating', 'placeholder': 'Heating (in KJ)'
     }))
-    waste = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
-        'type': 'number', 'class': 'input100', 'name': 'waste', 'placeholder': 'Waste generated (in Litres)'
+    electricity_gas = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'electricity_gas', 'placeholder': 'Gas (in Kg)'
     }))
-    water = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
-        'type': 'number', 'class': 'input100', 'name': 'water', 'placeholder': 'Water consumption (in Litres)'
+    travel_air_travel = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_air_travel', 'placeholder': 'Number of flights'
+    }))
+    travel_automobile_mileage = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_automobile_mileage', 'placeholder': 'Mileage (in Km)'
+    }))
+    travel_automobile_commute = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_automobile_commute', 'placeholder': 'Daily commute (in '
+                                                                                                   'Km) '
+    }))
+    travel_bus = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_bus', 'placeholder': 'Bus (in Km) '
+    }))
+    travel_coach = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_coach', 'placeholder': 'Coach (in Km) '
+    }))
+    travel_train = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_train', 'placeholder': 'National Train (in Km) '
+    }))
+    travel_int_train = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_int_train', 'placeholder': 'International Train (in Km) '
+    }))
+    travel_subway = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_subway', 'placeholder': 'Subway (in Km)'
+    }))
+    travel_tram = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_tram', 'placeholder': 'Tram(in Km)'
+    }))
+    travel_taxi = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_taxi', 'placeholder': 'Taxi (in Km)'
+    }))
+    travel_accommodation_hotel = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_accommodation_hotel', 'placeholder': 'Hotel (in days)'
+    }))
+    travel_accommodation_motel = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_accommodation_motel', 'placeholder': 'Motel (in days)'
+    }))
+    travel_accommodation_airbnb = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_accommodation_airbnb', 'placeholder': 'Airbnb (in days)'
+    }))
+    travel_accommodation_hostel = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'travel_accommodation_hostel', 'placeholder': 'Hostel (in days)'
+    }))
+    office_utilities_desktop = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_utilities_desktop', 'placeholder': 'Number of Desktops'
+    }))
+    office_utilities_laptop = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_utilities_laptop', 'placeholder': 'Number of Desktops'
+    }))
+    office_waste_bio = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_waste_bio', 'placeholder': 'Bio-waste (in Litres)'
+    }))
+    office_waste_battery = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_waste_battery', 'placeholder': 'Batteries'
+    }))
+    office_waste_plastic = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_waste_plastic', 'placeholder': 'Plastics/Packaging'
+    }))
+    office_waste_glass = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_waste_glass', 'placeholder': 'Glass'
+    }))
+    office_waste_paper = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_waste_paper', 'placeholder': 'Paper/Board'
+    }))
+    office_waste_hardware = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_waste_hardware', 'placeholder': 'Hardware'
+    }))
+    office_water = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={
+        'type': 'number', 'class': 'input100', 'name': 'office_water', 'placeholder': 'Water (in Litres)'
+    }))
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={
+        'type': 'text', 'class': 'input100', 'name': 'username', 'placeholder': 'Enter Username'
+    }))
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={
+        'type': 'password', 'class': 'input100', 'name': 'pass', 'placeholder': ' Enter Password'
     }))
