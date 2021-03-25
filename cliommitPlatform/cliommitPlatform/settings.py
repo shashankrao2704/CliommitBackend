@@ -25,7 +25,7 @@ SECRET_KEY = '5!6e^rvx(tnufn2@g9b4505$ka@dilc)oen2jn@&%#=y=n3z3v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'cliommit-mvp.herokuapp.com/']
 
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR, 'static')
