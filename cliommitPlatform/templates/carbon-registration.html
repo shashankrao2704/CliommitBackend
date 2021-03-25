@@ -4,14 +4,16 @@
 {% block content %}
 <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100">
                 <form id="regForm" action="{% url 'addCarbonData' %}" method="post">
                     {% csrf_token %}
+                    <div class="login100-pic js-tilt" data-tilt>
+					    <img type="image" src="{% static 'images/cliommit_logo.svg'%}" alt="IMG">
+                    </div>
                     <span class="login100-form-title">
                     {{ registry.company }}<br> FILL-IN YOUR CARBON DATA
                     </span>
                     <div class="tab">
-                        <h2>Company Facilities: Quarterly Energy Consumption</h2><br><br>
+                        <h2 class="login100-form-title">Company Facilities: Quarterly Energy Consumption</h2><br><br>
                         <div class="form-row">
                             <div class="wrap-input100 validate-input" data-validate = "Username is required">
                                 <p>
@@ -346,7 +348,6 @@
                         <span class="step"></span>
                     </div>
                 </form>
-            </div>
         </div>
 </div>
 {% endblock %}

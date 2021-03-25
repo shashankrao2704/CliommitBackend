@@ -76,7 +76,7 @@ class CarbonRegistration(forms.Form):
         'type': 'number', 'class': 'input100', 'name': 'electricity_amount', 'placeholder': 'Electricity (in KWh)'
     }))
     electricity_renewable = forms.ChoiceField(choices=YES_NO, widget=forms.RadioSelect(attrs={
-        'type': 'text', 'name': 'electricity_renewable'
+        'type': 'text', 'name': 'electricity_renewable', 'style':'font-family:Poppins-Regular'
     }))
     electricity_provider = forms.ChoiceField(choices=E_PROVIDER, widget=forms.Select(attrs={
         'type': 'text', 'class': 'input100', 'name': 'electricity_provider',

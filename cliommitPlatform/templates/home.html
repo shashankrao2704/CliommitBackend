@@ -13,7 +13,6 @@
             </ol>
           </nav>
           <!-- /Breadcrumb -->
-
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -21,9 +20,9 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://avatars.githubusercontent.com/u/55684835?s=460&u=e2a715074c1435dfaccc52a23509e3f7a46c693e&v=4" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>{{ user.user.company }}</h4>
-                      <p class="text-secondary mb-1">{{ user.user.sector }}</p>
-                      <p class="text-muted font-size-sm">{{ user.user.address }}</p>
+                      <h4>{{ user.company }}</h4>
+                      <p class="text-secondary mb-1">{{ user.sector }}</p>
+                      <p class="text-muted font-size-sm">{{ user.address }}</p>
                     </div>
                   </div>
                 </div>
@@ -45,14 +44,19 @@
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between">Annual carbon emissions<div class="text-secondary">69</div></div><br>
+                        <div class="d-flex justify-content-between">Annual carbon emissions<div class="text-secondary">
+                            {{ emmissions }}</div></div><br>
                         <div class="d-flex justify-content-between">Accounted carbon cost<div class="text-secondary">69</div></div><br>
                         <div class="d-flex justify-content-between">Assigned pool<div class="text-secondary">69</div></div><br>
                         <div class="d-flex justify-content-between">Pool participants<div class="text-secondary">69</div></div><br>
                         <div class="d-flex justify-content-between">Your pool value<div class="text-secondary">69</div></div><br>
+                        {% if carbon_exists is True %}
+                            <div class="d-flex justify-content-between"><b>Carbon data already exists</b></div><br>
+                        {% else %}
                         <form>
                             <button class="btn btn-outline-primary" formaction="{% url 'addCarbon' %}">Complete your carbon disclosure</button>
                         </form>
+                        {% endif %}
                     </div>
                   </div>
                 </div>
@@ -62,11 +66,11 @@
                       <ul class="list-group list-group-flush">
                           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Registry number</h6>
-                            <span class="text-secondary">{{ user.user.reg_no }}</span>
+                            <span class="text-secondary">{{ user.reg_no }}</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Number of employees</h6>
-                            <span class="text-secondary">{{ user.user.employees }}</span>
+                            <span class="text-secondary">{{ user.employees }}</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Years operational</h6>
@@ -74,11 +78,11 @@
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Headquarters</h6>
-                            <span class="text-secondary">{{ user.user.address }}</span>
+                            <span class="text-secondary">{{ user.address }}</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Annual revenue</h6>
-                            <span class="text-secondary">{{ user.user.turnover }}</span>
+                            <span class="text-secondary">{{ user.turnover }}</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>

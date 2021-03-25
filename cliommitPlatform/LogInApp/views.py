@@ -15,16 +15,6 @@ def LogInPage(request):
 
 def loginValidation(request):
     form = LoginForm(request.POST)
-    # registry = RegistrationData.objects.get(id=18)
-    # if form.is_valid():
-    #     if registry.username == form.cleaned_data['username']:
-    #         if registry.password == form.cleaned_data['password']:
-    #             return redirect('home')
-    #         else:
-    #             print("invalid password")
-    #     else:
-    #         print("invalid username")
-    # return redirect('login')
     if form.is_valid():
         username = form.cleaned_data['username']
         if RegistrationData.objects.filter(username=username):
@@ -40,15 +30,21 @@ def loginValidation(request):
 
 
 def Home(request, id):
-    user_carbon = CarbonData.objects.get(user_id=id)
+    user = RegistrationData.objects.get(id=id)
+    if CarbonData.objects.filter(user_id=id).exists():
+        carbon_data = CarbonData.objects.get(user_id=id)
+        emmissions = float(carbon_data.electricity_amount)*0.706
+        c_bool = True
+    else:
+        emmissions = 0
+        c_bool = False
+    request.session['project_id']=id
     context = {
-        "user": user_carbon,
+        "user": user,
+        "carbon_exists": c_bool,
+        "emmissions": emmissions
     }
     return render(request, 'home.html', context)
-
-def homeToCarbon(request):
-    return redirect('addCarbon')
-
 
 def register(request):
     context = {
@@ -79,7 +75,8 @@ def addUser(request):
 
 
 def carbonRegistration(request):
-    registry = RegistrationData.objects.get(id=18)
+    id = request.session.get('project_id')
+    registry = RegistrationData.objects.get(id=id)
     context = {
         "form": CarbonRegistration,
         "registry": registry
@@ -89,8 +86,9 @@ def carbonRegistration(request):
 
 def addCarbonData(request):
     form = CarbonRegistration(request.POST)
+    id = request.session.get('project_id')
     if form.is_valid():
-        myCarbonData = CarbonData(user=RegistrationData.objects.get(id=18),
+        myCarbonData = CarbonData(user=RegistrationData.objects.get(id=id),
                                   electricity_amount=form.cleaned_data['electricity_amount'],
                                   electricity_renewable=form.cleaned_data['electricity_renewable'],
                                   electricity_provider=form.cleaned_data['electricity_provider'],
@@ -123,4 +121,4 @@ def addCarbonData(request):
                                   )
         myCarbonData.save()
 
-    return redirect('addCarbon')
+    return redirect('home',id)

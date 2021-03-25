@@ -1,10 +1,24 @@
 #regForm {
-    background-color: #ffffff;
+    background-color: #00c9c6;
     margin: 100px auto;
-    font-family: Raleway;
-    padding: 40px;
+    font-family: Poppins-Regular;
+    /*padding: 40px;*/
     width: 70%;
     min-width: 300px;
+
+    /*width: 960px;*/
+    /*background: #00c9c6;*/
+    border-radius: 10px;
+    /*overflow: hidden;*/
+
+    /*display: -webkit-box;*/
+    /*display: -webkit-flex;*/
+    /*display: -moz-box;*/
+    /*display: -ms-flexbox;*/
+    /*display: flex;*/
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+    padding: 177px 130px 33px 95px;
 }
 
 /* Style the input fields */
@@ -12,7 +26,7 @@ select {
     padding: 10px;
     width: 33%;
     font-size: 17px;
-    font-family: Raleway;
+    font-family: Poppins-Regular;
     border: 1px solid #aaaaaa;
 }
 /*input {
@@ -53,7 +67,7 @@ button:hover {
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #bbbbbb;
+    background-color: #f7931e;
     border: none;
     border-radius: 50%;
     display: inline-block;
